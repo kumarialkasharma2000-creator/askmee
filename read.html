@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Reviews | ASKmee</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar input {
+            width: 40%;
+            padding: 7px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* MAIN */
+        .container {
+            padding: 25px;
+        }
+
+        /* FILTER BUTTONS */
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filters button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            border: none;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .filters button:hover {
+            background: #2980b9;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .card span {
+            font-size: 13px;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .review { background: green; }
+        .complaint { background: red; }
+        .help { background: orange; }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>ASKmee</h2>
+    <input type="text" placeholder="Search app, product or website...">
+    <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h2>Read Reviews & Complaints</h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="filters">
+        <button>All</button>
+        <button>Reviews</button>
+        <button>Complaints</button>
+        <button>Help</button>
+    </div>
+    <div class="cards" id="cards"></div>
+
+
+    <!-- CARDS
+    <div class="cards">
+
+        <div class="card">
+            <span class="review">Review</span>
+            <h3>
+  <a href="write.html?item=Instagram">Instagram</a>
+</h3>
+
+            <p>Great app for connecting with friends and sharing content.</p>
+            <p>⭐ 4.5</p>
+        </div>
+
+        <div class="card">
+            <span class="complaint">Complaint</span>
+            <h3>
+  <a href="write.html?item=Amazon">Amazon</a>
+</h3>
+
+            <p>Delivery was delayed and customer support was slow.</p>
+        </div>
+
+        <div class="card">
+            <span class="help">Help</span>
+            <h3>
+  <a href="write.html?item=Paytm">Paytm</a>
+</h3>
+
+            <p>How to link bank account with Paytm wallet?</p>
+        </div>
+
+        <div class="card">
+            <span class="review">Review</span>
+            <h3><a href="write.html?item= LinkedIn"> LinkedIn</a></h3>
+        
+            
+            <p>Very useful platform for professional networking.</p>
+            <p>⭐ 4.2</p>
+        </div>
+
+    </div>
+</div> -->
+
+<footer>
+    © 2025 ASKmee | Read Page
+</footer>
+<script>
+  // localStorage se data lena
+  let data = JSON.parse(localStorage.getItem("reviewsData")) || [];
+
+  let output = "";
+
+  if (data.length === 0) {
+    output = "<p>No reviews, complaints or help posts yet.</p>";
+  }
+
+  data.forEach(d => {
+    let badgeClass =
+      d.type === "Review" ? "review" :
+      d.type === "Complaint" ? "complaint" : "help";
+
+    output += `
+      <div class="card">
+        <span class="${badgeClass}">${d.type}</span>
+        <h3>${d.item}</h3>
+        <p>${d.message}</p>
+        ${d.rating ? `<p> ${d.rating}</p>` : ""}
+      </div>
+    `;
+  });
+
+  document.getElementById("cards").innerHTML = output;
+</script>
+
+
+</body>
+</html>

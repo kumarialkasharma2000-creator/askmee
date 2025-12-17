@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Write Review | ASKmee</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* FORM */
+        .container {
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>ASKmee</h2>
+    <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- FORM -->
+<div class="container">
+    <h2>Write Review / Complaint / Help</h2>
+
+    <label>Select Type</label>
+    <select>
+        <option>Review</option>
+        <option>Complaint</option>
+        <option>Help</option>
+    </select>
+
+    <label>App / Website / Product Name</label>
+    <p style="color:green; font-weight:bold;">
+  You are writing for: <span id="selectedItem"></span>
+</p>
+
+    <input type="text" id="itemName" placeholder="Enter name">
+
+    <label>Your Message</label>
+    <textarea placeholder="Write your experience or problem..."></textarea>
+
+    <label>Rating (Only for Reviews)</label>
+    <select>
+        <option> ⭐1</option>
+        <option> ⭐⭐2</option>
+        <option> ⭐⭐⭐3</option>
+        <option> ⭐⭐⭐⭐4</option>
+        <option> ⭐⭐⭐⭐⭐5</option>
+    </select>
+
+    <button type="button" onclick="saveData()">Submit</button>
+
+
+</div>
+
+<footer>
+    © 2025 ASKmee | Write Page
+</footer>
+<script>
+  // URL se "item" parameter read karna
+  const params = new URLSearchParams(window.location.search);
+  const item = params.get("item");
+
+  if (item) {
+    // Input box me auto-fill
+    document.getElementById("itemName").value = item;
+    document.getElementById("itemName").readOnly = true;
+
+    // Upar message me show
+    document.getElementById("selectedItem").innerText = item;
+  } else {
+    document.getElementById("selectedItem").innerText = "Not selected";
+  }
+</script>
+<script>
+function saveData() {
+  const type = document.querySelector("select").value;
+  const item = document.getElementById("itemName").value;
+  const msg = document.querySelector("textarea").value;
+  const rating = document.querySelectorAll("select")[1].value;
+
+  if (!type || !item || !msg) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  // Purana data lao (agar hai)
+  let data = JSON.parse(localStorage.getItem("reviewsData")) || [];
+
+  // Naya object banao
+  const newEntry = {
+    type: type,
+    item: item,
+    message: msg,
+    rating: type === "Review" ? rating : ""
+  };
+
+  // Save karo
+  data.push(newEntry);
+  localStorage.setItem("reviewsData", JSON.stringify(data));
+
+  alert("Submitted successfully!");
+  window.location.href = "read.html";
+}
+</script>
+
+
+
+</body>
+</html>

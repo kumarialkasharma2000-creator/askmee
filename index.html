@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASKmee</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar input {
+            width: 40%;
+            padding: 7px;
+            border-radius: 5px; 
+            border: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* MAIN LAYOUT */
+        .main {
+            display: flex;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px;
+            background: #34495e;
+            height: calc(100vh - 52px);
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #1abc9c;
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>ASKmee</h2>
+    <input type="text" placeholder="Search app, website or product...">
+    <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- MAIN BODY -->
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="#read.html"> Read Reviews</a>
+        <a href="#write.html"> Write Review</a>
+        <a href="#read.html"> Complaints</a>
+        <a href="#contact.html"> Help</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <h1>Welcome to ReviewSphere</h1>
+        <p>
+            A single platform where anyone can review, complain or seek help
+            about any app, website or product.
+        </p>
+
+        <h2>Trending Platforms</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Instagram</h3>
+                <p>Social Media App</p>
+                <p>⭐ 4.3 | Reviews & Complaints</p>
+            </div>
+
+            <div class="card">
+                <h3>Amazon</h3>
+                <p>Online Shopping</p>
+                <p>⭐ 4.1 | Delivery Issues</p>
+            </div>
+
+            <div class="card">
+                <h3>Paytm</h3>
+                <p>Payments & Recharge</p>
+                <p>⭐ 3.9 | Help & Support</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2025 ASKmee | Honest Reviews Platform
+</footer>
+
+</body>
+</html>
